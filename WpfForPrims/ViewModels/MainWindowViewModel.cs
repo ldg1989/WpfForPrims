@@ -11,11 +11,26 @@ using WpfForPrims.Views;
 
 namespace WpfForPrims.ViewModels
 {
+    /// <summary>
+    ///  ViewModel 必须在 ViewModels 文件夹
+    ///  
+    /// 页面View 必须在 Views 文件夹
+    /// 
+    /// 名称必须保持一致
+    /// 
+    /// 
+    /// 
+    /// 
+    /// </summary>
+
+
     public class MainWindowViewModel : BindableBase
     {
         public DelegateCommand<string> ShowContentCmm { get; set; }
 
-
+        /// <summary>
+        /// 区域管理器
+        /// </summary>
         private readonly IRegionManager _regionManager;
 
         public MainWindowViewModel(IRegionManager regionManager)

@@ -26,6 +26,9 @@
             <Button Content="模块C" Command="{Binding ShowContentCmm}" CommandParameter="UCC"></Button>
 
         </StackPanel>
+        <!--Content="{Binding ShowContent}"  MVVM 写法
+        prism:RegionManager.RegionName="ContentRegion" 指定区域 
+        -->
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"></ContentControl>
 
 
