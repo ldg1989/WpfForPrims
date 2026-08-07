@@ -46,7 +46,7 @@ namespace WpfForPrims.ViewModels
         private void ShowContentFunc(string viewName)
         {
             // 字符串 "UCA" / "UCB" / "UCC" 必须和 App.RegisterForNavigation 注册的类型一一对应
-            _regionManager.RequestNavigate("ContentRegion", viewName);
+            _regionManager.RequestNavigate("ContentRegion", viewName); 
         }
 
 
@@ -79,7 +79,7 @@ namespace WpfForPrims.ViewModels
         //    set
         //    {
         //        _showContent = value;
-        //        RaisePropertyChanged();
+        //        RaisePropertyChanged();// 值改变时通知界面更新
         //    }
         //}
         #endregion

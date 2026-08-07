@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using ModuleA;
+using ModuleB;
 using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Modularity;
+using System.Windows;
 using WpfForPrims.Views;
 
 namespace WpfForPrims
@@ -27,9 +30,18 @@ namespace WpfForPrims
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // 名称要和 ViewModel 里 RequestNavigate 的字符串一致
-            containerRegistry.RegisterForNavigation<UCA>();
-            containerRegistry.RegisterForNavigation<UCB>();
-            containerRegistry.RegisterForNavigation<UCC>();
+            //containerRegistry.RegisterForNavigation<UCA>();
+            //containerRegistry.RegisterForNavigation<UCB>();
+            //containerRegistry.RegisterForNavigation<UCC>();
         }
+
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<ModuleAProfile>();
+            moduleCatalog.AddModule<ModuleBProfile>();
+            base.ConfigureModuleCatalog(moduleCatalog);
+        }
+
+
     }
 }

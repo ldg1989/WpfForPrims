@@ -21,9 +21,8 @@
                 </Style>
             </StackPanel.Resources>
 
-            <Button Content="模块A" Command="{Binding ShowContentCmm}" CommandParameter="UCA"></Button>
-            <Button Content="模块B" Command="{Binding ShowContentCmm}" CommandParameter="UCB"></Button>
-            <Button Content="模块C" Command="{Binding ShowContentCmm}" CommandParameter="UCC"></Button>
+            <Button Content="模块A" Command="{Binding ShowContentCmm}" CommandParameter="ViewA"></Button>
+            <Button Content="模块B" Command="{Binding ShowContentCmm}" CommandParameter="ViewB"></Button>
 
         </StackPanel>
         <!--Content="{Binding ShowContent}"  MVVM 写法

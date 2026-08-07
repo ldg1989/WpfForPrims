@@ -9,7 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\UCA.xaml.cs" />
+    <Compile Remove="Views\UCB.xaml.cs" />
+    <Compile Remove="Views\UCC.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Views\UCA.xaml" />
+    <Page Remove="Views\UCB.xaml" />
+    <Page Remove="Views\UCC.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModuleA\ModuleA.csproj" />
+    <ProjectReference Include="..\ModuleB\ModuleB.csproj" />
   </ItemGroup>
 
 </Project>
