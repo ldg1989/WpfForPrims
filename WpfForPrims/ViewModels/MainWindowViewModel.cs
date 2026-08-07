@@ -82,8 +82,6 @@ namespace WpfForPrims.ViewModels
             }, parameters);
         }
 
-
-
         #region 没使用 prism的实现
         //private void ShowContentFunc(string viewName)
         //{
@@ -117,9 +115,6 @@ namespace WpfForPrims.ViewModels
         //    }
         //}
         #endregion
-
-
-
 
     }
 }
