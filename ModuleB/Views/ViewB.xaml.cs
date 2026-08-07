@@ -17,7 +17,7 @@ namespace ModuleB.Views
     /// <summary>
     /// ViewB.xaml 的交互逻辑
     /// </summary>
-    public partial class ViewB : Window
+    public partial class ViewB : UserControl
     {
         public ViewB()
         {
