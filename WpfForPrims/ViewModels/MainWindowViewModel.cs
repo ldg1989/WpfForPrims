@@ -26,8 +26,20 @@ namespace WpfForPrims.ViewModels
 
     public class MainWindowViewModel : BindableBase
     {
+        /// <summary>
+        /// 导航记录
+        /// </summary>
+        private IRegionNavigationJournal Journal;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public DelegateCommand<string> ShowContentCmm { get; set; }
 
+        /// <summary>
+        /// 后退
+        /// </summary>
+        public DelegateCommand<string> BackCmm { get; set; }
         /// <summary>
         /// 区域管理器
         /// </summary>
@@ -37,6 +49,19 @@ namespace WpfForPrims.ViewModels
         {
             _regionManager = regionManager;
             ShowContentCmm = new DelegateCommand<string>(ShowContentFunc);
+            BackCmm = new DelegateCommand<string>(BackFunc);
+        }
+
+        /// <summary>
+        /// 回退方法
+        /// </summary>
+        /// <param name="obj"></param>
+        private void BackFunc(string obj)
+        {
+            if (Journal != null && Journal.CanGoBack)
+            {
+                Journal.GoBack();
+            }
         }
 
         /// <summary>
@@ -46,8 +71,17 @@ namespace WpfForPrims.ViewModels
         private void ShowContentFunc(string viewName)
         {
             // 字符串 "UCA" / "UCB" / "UCC" 必须和 App.RegisterForNavigation 注册的类型一一对应
-            _regionManager.RequestNavigate("ContentRegion", viewName); 
+
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add("MsgA", "Hello World,I am A");
+
+            //callback  导航完成后的回调 存下记录
+            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName, callback =>
+            {
+                Journal = callback.Context.NavigationService.Journal;
+            }, parameters);
         }
+
 
 
         #region 没使用 prism的实现

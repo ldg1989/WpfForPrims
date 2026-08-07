@@ -1,5 +1,7 @@
 ﻿//using ModuleA;
 //using ModuleB;
+using ModuleA;
+using ModuleB;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -35,18 +37,17 @@ namespace WpfForPrims
             //containerRegistry.RegisterForNavigation<UCC>();
         }
         //引用项目的方式
-        //protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
-        //{
-        //    moduleCatalog.AddModule<ModuleAProfile>();
-        //    moduleCatalog.AddModule<ModuleBProfile>();
-        //    base.ConfigureModuleCatalog(moduleCatalog);
-        //}
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        {
+            moduleCatalog.AddModule<ModuleAProfile>();
+            moduleCatalog.AddModule<ModuleBProfile>();
+        }
 
         // 添加dll 方式
-        protected override IModuleCatalog CreateModuleCatalog()
-        {
-            return new DirectoryModuleCatalog() { ModulePath = ".\\Modules" };
-        }
+        //protected override IModuleCatalog CreateModuleCatalog()
+        //{
+        //    return new DirectoryModuleCatalog() { ModulePath = ".\\Modules" };
+        //}
 
 
 

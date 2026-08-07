@@ -23,6 +23,7 @@
 
             <Button Content="模块A" Command="{Binding ShowContentCmm}" CommandParameter="ViewA"></Button>
             <Button Content="模块B" Command="{Binding ShowContentCmm}" CommandParameter="ViewB"></Button>
+            <Button Content="后退" Command="{Binding BackCmm}"  ></Button>
 
         </StackPanel>
         <!--Content="{Binding ShowContent}"  MVVM 写法

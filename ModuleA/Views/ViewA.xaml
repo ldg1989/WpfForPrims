@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">我是ViewA</TextBlock>
+        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Msg}" FontSize="30"></TextBlock>
     </Grid>
 </UserControl>

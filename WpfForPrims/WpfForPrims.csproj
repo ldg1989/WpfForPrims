@@ -15,11 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Modules\ModuleA.dll" />
-    <None Remove="Modules\ModuleB.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Remove="Views\UCA.xaml" />
     <Page Remove="Views\UCB.xaml" />
     <Page Remove="Views\UCC.xaml" />
@@ -30,12 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Modules\ModuleA.dll">
+    <ProjectReference Include="..\ModuleA\ModuleA.csproj" />
+    <ProjectReference Include="..\ModuleB\ModuleB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Modules\ModuleA.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\ModuleB.dll">
+    </None>
+    <None Update="Modules\ModuleB.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
   </ItemGroup>
 
 </Project>
