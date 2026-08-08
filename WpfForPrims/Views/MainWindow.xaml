@@ -25,6 +25,10 @@
             <Button Content="模块B" Command="{Binding ShowContentCmm}" CommandParameter="ViewB"></Button>
             <Button Content="后退" Command="{Binding BackCmm}"  ></Button>
 
+
+            <Button Content="打开回话框" Command="{Binding DialogCmm}" CommandParameter="ViewC"  ></Button>
+
+
         </StackPanel>
         <!--Content="{Binding ShowContent}"  MVVM 写法
         prism:RegionManager.RegionName="ContentRegion" 指定区域 

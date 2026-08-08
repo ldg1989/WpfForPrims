@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using WpfForPrims.Views;
 
 namespace WpfForPrims.ViewModels
@@ -40,16 +41,33 @@ namespace WpfForPrims.ViewModels
         /// 后退
         /// </summary>
         public DelegateCommand<string> BackCmm { get; set; }
+
+        /// <summary>
+        /// 对话框命令
+        /// </summary>
+        public DelegateCommand<string> DialogCmm { get; set; }
+
+
         /// <summary>
         /// 区域管理器
         /// </summary>
         private readonly IRegionManager _regionManager;
 
-        public MainWindowViewModel(IRegionManager regionManager)
+        /// <summary>
+        /// 对话框服务
+        /// </summary>
+        private readonly IDialogService _dialogService;
+
+
+        public MainWindowViewModel(IRegionManager regionManager, IDialogService dialogService)
         {
             _regionManager = regionManager;
             ShowContentCmm = new DelegateCommand<string>(ShowContentFunc);
             BackCmm = new DelegateCommand<string>(BackFunc);
+
+            _dialogService = dialogService;//对话框服务
+            DialogCmm = new DelegateCommand<string>(ShowDialogFunc);
+
         }
 
         /// <summary>
@@ -72,6 +90,7 @@ namespace WpfForPrims.ViewModels
         {
             // 字符串 "UCA" / "UCB" / "UCC" 必须和 App.RegisterForNavigation 注册的类型一一对应
 
+            #region 打开
             NavigationParameters parameters = new NavigationParameters();
             parameters.Add("MsgA", "Hello World,I am A");
 
@@ -80,7 +99,35 @@ namespace WpfForPrims.ViewModels
             {
                 Journal = callback.Context.NavigationService.Journal;
             }, parameters);
+            #endregion
         }
+
+        /// <summary>
+        /// 对话框服务
+        /// </summary>
+        /// <param name="viewName">用户控件的名字</param>
+        private void ShowDialogFunc(string viewName)
+        {
+            DialogParameters keyValuePairs = new DialogParameters();
+            keyValuePairs.Add("Title", "这是对话框的标识AAAAAAAAAA");
+            keyValuePairs.Add("para1", "参数1");
+            keyValuePairs.Add("para2", "参数2");
+            _dialogService.ShowDialog(viewName, keyValuePairs, callback =>
+            {
+                if (callback.Result == ButtonResult.OK)
+                {
+                    //接受对话框返回的参数
+                    var r1 = callback.Parameters.GetValue<string>("para1");
+                    var r2 = callback.Parameters.GetValue<string>("para2");
+                }
+                else if (callback.Result == ButtonResult.No)
+                {
+                    var r1 = callback.Parameters.GetValue<string>("para1");
+                    var r2 = callback.Parameters.GetValue<string>("para2");
+                }
+            });
+        }
+
 
         #region 没使用 prism的实现
         //private void ShowContentFunc(string viewName)
