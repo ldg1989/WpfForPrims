@@ -26,8 +26,12 @@
             <Button Content="后退" Command="{Binding BackCmm}"  ></Button>
 
 
-            <Button Content="打开回话框" Command="{Binding DialogCmm}" CommandParameter="ViewC"  ></Button>
+            <Button Content="打开会话框" Command="{Binding DialogCmm}" CommandParameter="ViewC"  ></Button>
+            <Button Content="发布消息" Click="Button_Click" ></Button>
 
+            <Button Content="订阅消息" Click="Button_Click_1" ></Button>
+
+            <Button Content="取消订阅" Click="Button_Click_2" ></Button>
 
         </StackPanel>
         <!--Content="{Binding ShowContent}"  MVVM 写法
